@@ -1,13 +1,4 @@
 export default {
-   '@global': {
-      '.fade-exit': {
-         opacity: 1,
-      },
-      '.fade-exit-active': {
-         opacity: 0,
-         transition: 'opacity 500ms ease-out',
-      },
-   },
    root: {
       height: '100vh',
       display: 'flex',

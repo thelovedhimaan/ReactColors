@@ -1,38 +1,41 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import Slider from 'rc-slider';
+import { withStyles } from '@material-ui/styles';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
-import 'rc-slider/assets/index.css';
-import './Navbar.css';
 import Snackbar from '@material-ui/core/Snackbar';
-import CloseIcon from '@material-ui/icons/Close';
 import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
+import Slider from 'rc-slider';
+import 'rc-slider/assets/index.css';
+import styles from './styles/NavbarStyles';
 
-export default class Navbar extends Component {
+class Navbar extends Component {
    constructor(props) {
       super(props);
       this.state = { format: 'hex', open: false };
+      this.handleFormatChange = this.handleFormatChange.bind(this);
+      this.closeSnackbar = this.closeSnackbar.bind(this);
    }
-   handleChange = (evt) => {
-      this.setState({ format: evt.target.value, open: true });
-      this.props.handleChange(evt.target.value);
-   };
-   closeSnackbar = () => {
+   handleFormatChange(e) {
+      this.setState({ format: e.target.value, open: true });
+      this.props.handleChange(e.target.value);
+   }
+   closeSnackbar() {
       this.setState({ open: false });
-   };
+   }
    render() {
-      const { level, changeLevel, showingAllcolors } = this.props;
+      const { level, changeLevel, showingAllColors, classes } = this.props;
       const { format } = this.state;
       return (
-         <header className="Navbar">
-            <div className="logo">
-               <Link to="/">Jst Color Picker</Link>
+         <header className={classes.Navbar}>
+            <div className={classes.logo}>
+               <Link to="/">reactcolorpicker</Link>
             </div>
-            {showingAllcolors && (
-               <div className="slider-container">
-                  <span>{level} :</span>
-                  <div className="slider">
+            {showingAllColors && (
+               <div>
+                  <span>Level: {level}</span>
+                  <div className={classes.slider}>
                      <Slider
                         defaultValue={level}
                         min={100}
@@ -43,12 +46,12 @@ export default class Navbar extends Component {
                   </div>
                </div>
             )}
-            <div className="select-container">
-               <Select value={format} onChange={this.handleChange}>
+            <div className={classes.selectContainer}>
+               <Select value={format} onChange={this.handleFormatChange}>
                   <MenuItem value="hex">HEX - #ffffff</MenuItem>
-                  <MenuItem value="rgb">RGB - rgb(255, 255, 255) </MenuItem>
+                  <MenuItem value="rgb">RGB - rgb(255,255,255)</MenuItem>
                   <MenuItem value="rgba">
-                     RGBA - rgb(255, 255, 255, 1.0)
+                     RGBA - rgba(255,255,255, 1.0)
                   </MenuItem>
                </Select>
             </div>
@@ -58,7 +61,7 @@ export default class Navbar extends Component {
                autoHideDuration={3000}
                message={
                   <span id="message-id">
-                     Format changed.... {format.toUpperCase()}
+                     Format Changed To {format.toUpperCase()}
                   </span>
                }
                ContentProps={{
@@ -80,3 +83,4 @@ export default class Navbar extends Component {
       );
    }
 }
+export default withStyles(styles)(Navbar);
