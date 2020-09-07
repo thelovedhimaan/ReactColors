@@ -8,7 +8,7 @@ export default {
       display: 'inline-block',
       position: 'relative',
       cursor: 'pointer',
-      marginBottom: '-4px',
+      marginBottom: '-4.2px',
       '&:hover button': {
          opacity: 1,
       },
@@ -16,7 +16,7 @@ export default {
 
    copyText: {
       color: (props) =>
-         chroma(props.background).luminance() >= 0.7 ? 'black' : 'white',
+         chroma(props.background).luminance() >= 0.1 ? 'black' : 'white',
    },
    colorName: {
       color: (props) =>
@@ -112,7 +112,7 @@ export default {
       },
       '& p': {
          fontSize: '2rem',
-         fontWeight: '100',
+         fontWeight: '400',
       },
    },
    showMessage: {
