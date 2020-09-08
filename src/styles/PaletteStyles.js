@@ -13,8 +13,9 @@ export default {
       margin: '0 auto',
       display: 'inline-block',
       position: 'relative',
+
       cursor: 'pointer',
-      marginBottom: '-3.5px',
+      marginBottom: '-3.9px',
       opacity: 1,
       backgroundColor: 'black',
       '& a': {

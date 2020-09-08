@@ -4,6 +4,8 @@ export default {
       alignItems: 'center',
       justifyContent: 'flex-start',
       height: '6vh',
+      backgroundColor: 'black',
+      color: 'white',
    },
    logo: {
       marginRight: '15px',
@@ -13,6 +15,7 @@ export default {
       fontFamily: 'Roboto',
       height: '100%',
       display: 'flex',
+      color: 'white',
       alignItems: 'center',
       '& a': {
          textDecoration: 'none',
@@ -42,6 +45,7 @@ export default {
    },
    selectContainer: {
       marginLeft: 'auto',
+      backgroundColor: 'white',
       marginRight: '1rem',
    },
 };
